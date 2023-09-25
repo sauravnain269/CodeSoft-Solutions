@@ -1,0 +1,79 @@
+C++ Task 3 - Student Grading System
+
+
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+int main() {
+    int numStudents;
+    std::cout << "Enter the number of students: ";
+    std::cin >> numStudents;
+
+    std::vector<std::string> studentNames;
+    std::vector<double> studentGrades;
+
+    // Input student names and grades
+    for (int i = 0; i < numStudents; ++i) {
+        std::string name;
+        double grade;
+
+        std::cout << "Enter the name of student " << i + 1 << ": ";
+        std::cin.ignore(); // Clear the newline character from the previous input
+        std::getline(std::cin, name);
+
+        std::cout << "Enter the grade for " << name << ": ";
+        std::cin >> grade;
+
+        studentNames.push_back(name);
+        studentGrades.push_back(grade);
+    }
+
+    // Calculate the average grade
+    double sum = 0.0;
+    double highestGrade = studentGrades[0];
+    double lowestGrade = studentGrades[0];
+
+    for (double grade : studentGrades) {
+        sum += grade;
+        if (grade > highestGrade) {
+            highestGrade = grade;
+        }
+        if (grade < lowestGrade) {
+            lowestGrade = grade;
+        }
+    }
+
+    double averageGrade = sum / numStudents;
+
+    // Display the results
+    std::cout << "\nStudent Grades:\n";
+    for (int i = 0; i < numStudents; ++i) {
+        std::cout << studentNames[i] << ": " << studentGrades[i] << std::endl;
+    }
+
+    std::cout << "\nAverage Grade: " << averageGrade << std::endl;
+    std::cout << "Highest Grade: " << highestGrade << std::endl;
+    std::cout << "Lowest Grade: " << lowestGrade << std::endl;
+
+    return 0;
+}
+
+Output://
+
+Enter the number of students: 3
+Enter the name of student 1: Saurav
+Enter the grade for Saurav: 8
+Enter the name of student 2: Sumeet
+Enter the grade for Sumeet: 5
+Enter the name of student 3: Akshit
+Enter the grade for Akshit: 10
+Student Grades:
+Saurav: 8
+Sumeet: 5
+Akshit: 10
+
+Average Grade: 7.66667
+Highest Grade: 10
+Lowest Grade: 5

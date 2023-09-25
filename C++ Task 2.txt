@@ -1,0 +1,56 @@
+
+C++ Task 2 - Calculator
+
+#include <iostream>
+
+int main() {
+    char operation;
+    double num1, num2, result;
+
+    // Ask the user for input
+    std::cout << "Enter first number: ";
+    std::cin >> num1;
+
+    std::cout << "Enter second number: ";
+    std::cin >> num2;
+
+    // Ask the user for the desired operation
+    std::cout << "Choose an operation (+, -, *, /): ";
+    std::cin >> operation;
+
+    // Perform the selected operation
+    switch (operation) {
+        case '+':
+            result = num1 + num2;
+            break;
+        case '-':
+            result = num1 - num2;
+            break;
+        case '*':
+            result = num1 * num2;
+            break;
+        case '/':
+            if (num2 != 0) {
+                result = num1 / num2;
+            } else {
+                std::cout << "Error: Division by zero is not allowed.\n";
+                return 1; // Exit with an error code
+            }
+            break;
+        default:
+            std::cout << "Invalid operation selected.\n";
+            return 1; // Exit with an error code
+    }
+
+    // Display the result
+    std::cout << "Result: " << num1 << " " << operation << " " << num2 << " = " << result << "\n";
+
+    return 0;
+}
+
+
+Output://
+Enter first number: 4
+Enter second number: 67
+Choose an operation (+, -, *, /): *
+Result: 4 * 67 = 268

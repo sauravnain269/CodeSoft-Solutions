@@ -1,0 +1,59 @@
+C++ Task 1 - Number Guessing Game
+
+
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+int main() {
+    // Seed the random number generator with the current time
+    std::srand(std::time(0));
+
+    // Generate a random number between 1 and 100
+    int randomNumber = std::rand() % 100 + 1;
+
+    int userGuess;
+    int numberOfGuesses = 0;
+
+    std::cout << "Welcome to the Guess the Number game!\n";
+    std::cout << "I have selected a random number between 1 and 100.\n";
+
+    do {
+        // Ask the user for their guess
+        std::cout << "Enter your guess: ";
+        std::cin >> userGuess;
+
+        // Increment the number of guesses
+        numberOfGuesses++;
+
+        // Check if the guess is correct, too high, or too low
+        if (userGuess == randomNumber) {
+            std::cout << "Congratulations! You guessed the correct number in " << numberOfGuesses << " attempts.\n";
+        } else if (userGuess < randomNumber) {
+            std::cout << "Too low! Try again.\n";
+        } else {
+            std::cout << "Too high! Try again.\n";
+        }
+    } while (userGuess != randomNumber);
+
+    return 0;
+}
+
+
+Output://
+Welcome to the Guess the Number game!
+I have selected a random number between 1 and 100.
+Enter your guess: 68
+Too low! Try again.
+Enter your guess: 34
+Too low! Try again.
+Enter your guess: 79
+Too high! Try again.
+Enter your guess: 80
+Too high! Try again.
+Enter your guess: 90
+Too high! Try again.
+Enter your guess: 56
+Too low! Try again.
+Enter your guess: 78
+Congratulations! You guessed the correct number in 7 attempts.
